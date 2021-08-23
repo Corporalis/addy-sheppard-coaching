@@ -22,3 +22,5 @@ How would you answer the following questions?
 * Are these goals truly in my heart or do I believe I ‘should’ be working on them?
 
 All these ideas and more that can be explored through coaching to create that nudge you need to move forwards.
+
+Please get in touch for a free 20 minute consultation where we can discuss your needs.
