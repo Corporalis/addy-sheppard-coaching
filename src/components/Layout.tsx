@@ -24,6 +24,7 @@ import './layout.scss'
 import Scrollable from './scroll/Scrollable'
 import { GlobalStyles } from '../GlobalStyles'
 import { theme } from '../theme'
+import { Footer } from './Footer'
 
 interface SEOStaticQuery {
   site: {
@@ -159,6 +160,7 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
         <PageContent id="page-content" className="pageContent">
           {children}
         </PageContent>
+        <Footer />
       </div>
     </ThemeProvider>
   )
