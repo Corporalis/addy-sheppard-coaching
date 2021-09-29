@@ -93,13 +93,13 @@ export default TestimonialsContent
 const Quote = styled(Card)`
   font-size: 0.9rem;
   width: 75%;
-  margin: 0 auto 2em auto;
-  min-height: 20rem;
-  padding: 0 8rem 8rem 8rem;
-  border-radius: 10rem;
+  margin: 0 auto 3em auto;
+  min-height: 10rem;
+  padding: 0 2rem 2rem 2rem;
+  border-radius: 1rem;
   ::before {
     content: '\\275D';
-    font-size: 8rem;
+    font-size: 6rem;
     ${media.lessThan('medium')`
       font-size: 4rem;
     `}
@@ -109,17 +109,14 @@ const Quote = styled(Card)`
   ${media.lessThan('medium')`
     padding: 2rem 4rem 4rem 4rem;
     width: 100%;
-    border-radius: 5rem;
+    border-radius: 1rem;
   `}
 `
 
 const QuoteText = styled.div`
   font-weight: 300;
   position: relative;
-  top: -3rem;
-  ${media.lessThan('medium')`
-    top: -2rem;
-  `}
+  top: -1rem;
 `
 const Empty = styled.div``
 
