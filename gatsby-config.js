@@ -1,6 +1,10 @@
+const name = `Addy Sheppard Coaching`
+const shortName = `Addy Sheppard`
+
 module.exports = {
+
   siteMetadata: {
-    title: 'Addy Sheppard',
+    title: name,
   },
   plugins: [
     {
@@ -44,6 +48,23 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        short_name: shortName,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        start_url: `/`,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        background_color: `#f8f8ff`,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        theme_color: `#313639`,
+        display: `minimal-ui`,
+        orientation: 'portrait-primary',
+        icon: 'src/images/fav.png',
+      },
+    },
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
