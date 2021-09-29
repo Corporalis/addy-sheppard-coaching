@@ -116,7 +116,10 @@ const Quote = styled(Card)`
 const QuoteText = styled.div`
   font-weight: 300;
   position: relative;
+  top: -2rem;
+  ${media.lessThan('medium')`
   top: -1rem;
+`}
 `
 const Empty = styled.div``
 
