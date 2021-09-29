@@ -9,7 +9,7 @@ export const Footer = (): JSX.Element => {
       <FooterContainer>
         <ContactItems>
           <ContactLink
-            href="a-sheppard@live.co.uk"
+            href="mailto:a-sheppard@live.co.uk"
             title="Email Add Sheppard Coaching"
           >
             a-sheppard@live.co.uk
