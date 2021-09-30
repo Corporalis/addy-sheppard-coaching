@@ -10,5 +10,12 @@ export const theme: DefaultTheme = {
       text: '#fff',
     },
     background: '#fff',
+    shadow: {
+      dark: '#212529',
+      medium: '#6c757d',
+    },
+    common: {
+      black: '#000',
+    },
   },
 }

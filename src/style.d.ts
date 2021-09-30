@@ -12,6 +12,13 @@ declare module 'styled-components' {
         text: string
       }
       background: string
+      shadow: {
+        dark: string
+        medium: string
+      }
+      common: {
+        black: string
+      }
     }
   }
 }

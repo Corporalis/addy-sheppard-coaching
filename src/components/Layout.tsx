@@ -6,7 +6,7 @@ import Helmet from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import styled, { ThemeProvider } from 'styled-components'
+import styled, { StyledProps, ThemeProvider } from 'styled-components'
 
 import {
   faPhone,
@@ -25,6 +25,7 @@ import Scrollable from './scroll/Scrollable'
 import { GlobalStyles } from '../GlobalStyles'
 import { theme } from '../theme'
 import { Footer } from './Footer'
+import media from 'styled-media-query'
 
 interface SEOStaticQuery {
   site: {
@@ -39,6 +40,10 @@ interface SEOStaticQuery {
   }
 }
 
+interface NavProps {
+  $scrolled: boolean
+}
+
 const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
   const [collapsed, setCollapsed] = useState<boolean>(false)
   const [activeClass] = useState<string>('inactive')
@@ -46,6 +51,7 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
 
   const handleScroll = () => {
     var pageContentRect = document.body.getBoundingClientRect()
+    console.log(pageContentRect.top < -40)
     setScrolled(pageContentRect.top < -40)
   }
 
@@ -80,11 +86,9 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
       <div className="App">
         <Helmet title={site.siteMetadata.title}></Helmet>
         <Scrollable onWindowScroll={handleScroll}></Scrollable>
-        <nav
-          className={`navbar navbar-expand-lg navbar-light fixed-top py-3 ${
-            scrolled ? 'navbar-scrolled' : ''
-          }`}
-          id="mainNav"
+        <Navbar
+          $scrolled={scrolled}
+          className={`navbar navbar-expand-lg navbar-light fixed-top py-3`}
         >
           <Container>
             <GatsbyImage
@@ -108,55 +112,54 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute) => {
             </button>
             <div
               className={`collapse navbar-collapse ${collapsed ? 'show' : ''}`}
-              id="navbarResponsive"
             >
-              <ul className="navbar-nav ml-auto my-2 my-lg-0">
-                <li className="nav-item">
-                  <Link
+              <NavbarNav className="navbar-nav ml-auto my-2 my-lg-0">
+                <NavbarNavItem className="nav-item">
+                  <NavbarNavItemLink
+                    $scrolled={scrolled}
                     activeClass={activeClass}
                     to="coaching"
                     spy={true}
                     smooth={true}
                     offset={-132}
                     duration={500}
-                    className="nav-link"
                     onClick={navigationClick}
                   >
                     Coaching
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
+                  </NavbarNavItemLink>
+                </NavbarNavItem>
+                <NavbarNavItem className="nav-item">
+                  <NavbarNavItemLink
+                    $scrolled={scrolled}
                     activeClass={activeClass}
                     to="offerings"
                     spy={true}
                     smooth={true}
                     offset={-132}
                     duration={500}
-                    className="nav-link"
                     onClick={navigationClick}
                   >
                     When we meet
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
+                  </NavbarNavItemLink>
+                </NavbarNavItem>
+                <NavbarNavItem className="nav-item">
+                  <NavbarNavItemLink
+                    $scrolled={scrolled}
                     activeClass={activeClass}
                     to="about"
                     spy={true}
                     smooth={true}
                     offset={-132}
                     duration={500}
-                    className={`nav-link`}
                     onClick={navigationClick}
                   >
                     About
-                  </Link>
-                </li>
-              </ul>
+                  </NavbarNavItemLink>
+                </NavbarNavItem>
+              </NavbarNav>
             </div>
           </Container>
-        </nav>
+        </Navbar>
         <PageContent id="page-content" className="pageContent">
           {children}
         </PageContent>
@@ -170,4 +173,54 @@ export default TemplateWrapper
 
 const PageContent = styled.div`
   flex: 1;
+`
+
+const NavbarNav = styled.ul``
+
+const NavbarNavItem = styled.li``
+
+const NavbarNavItemLink = styled(Link)`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.shadow.medium};
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 0.75rem 0;
+  &:hover,
+  &:active {
+    color: ${({ theme }) => theme.colors.primary.main};
+  }
+  &.active {
+    color: ${({ theme }) => theme.colors.primary.main} !important;
+  }
+
+  ${media.greaterThan('large')`
+  color: ${({ theme }) => theme.colors.shadow.dark};
+  padding: 0 1rem;
+`}
+
+  ${(props: StyledProps<NavProps>) =>
+    props.$scrolled &&
+    media.greaterThan('large') &&
+    `
+      color: ${props.theme.colors.shadow.dark};
+      &:hover {
+        color: ${props.theme.colors.primary.main};
+      }
+`}
+`
+
+const Navbar = styled.nav`
+  transition: background-color 0.2s ease;
+  ${media.greaterThan('large')`
+  box-shadow: none;
+  background-color: ${({ theme }) => theme.colors.background};
+`}
+
+  ${(props: StyledProps<NavProps>) =>
+    props.$scrolled &&
+    media.greaterThan('large') &&
+    `
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    background-color: ${props.theme.colors.background} !important;
+`}
 `
