@@ -23,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
   hr.divider {
     max-width: 3.25rem;
     border-width: 0.2rem;
-    border-color: ${({ theme }) => theme.colors.highlight.text};
+    border-color: ${({ theme }) => theme.colors.primary.main};
   }
 
   hr.light {
