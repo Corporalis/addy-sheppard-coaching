@@ -23,7 +23,7 @@
     "gatsby-remark-copy-linked-files": "^4.3.0",
     "gatsby-remark-prismjs": "^5.3.0",
     "gatsby-source-filesystem": "^3.6.0",
-    "gatsby-transformer-remark": "^4.3.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^3.14.0",
     "netlify-cms-app": "^2.15.17",
     "prettier": "^2.3.0",
